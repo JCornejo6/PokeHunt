@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css'
+import Guessing from './Guessing.jsx';
 
 
 function App() {
@@ -16,11 +17,6 @@ const [menuOpen,setMenuOpen] = useState(false);
       setGameStarted(true);
       setTransitioning(false);
     },1000);
-  }
-
-  {/*Start encounter*/}
-  function startEncounter(){
-    console.log("Starting Wild Encounter!")
   }
 
   {/*Open/Close start menu*/}
@@ -66,13 +62,8 @@ const [menuOpen,setMenuOpen] = useState(false);
      {gameStarted &&(
       <div className='gameScreen'> 
       
-      {/*Whos that poke?*/}
-      <button 
-      className='gameControl encounterButton'
-      onClick={startEncounter}
-      >
-        Who's That Pokemon?
-      </button>
+      {/*Whos that poke? guessing game*/}
+      <Guessing />
 
       {/*Select*/}
       <button className='gameControl selectButton'>
