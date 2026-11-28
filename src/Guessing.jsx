@@ -3,7 +3,7 @@ import { fetchRandomPokemon, formatPokemonName, isCorrectGuess } from './pokeApi
 
 const MAX_GUESSES = 3;
 
-function Guessing() {
+function Guessing({onCorrectGuess}) {
   const [roundNumber, setRoundNumber] = useState(0);
   const [currentPokemon, setCurrentPokemon] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -73,7 +73,10 @@ function Guessing() {
 
     if (isCorrectGuess(guessText, currentPokemon)) {
       setGuessResult("correct");
-      return;
+
+    //adding to pokedex
+    onCorrectGuess(currentPokemon);
+    return;
     }
 
     const newWrongGuessCount = wrongGuessCount + 1;
